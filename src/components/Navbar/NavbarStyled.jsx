@@ -62,27 +62,6 @@ export const InputSpace = styled.div`
     }
 `
 
-export const Button = styled.button`
-    text-transform: uppercase;
-    background-color: #0bade3;
-    border: none;
-    outline: none;
-    font-size: 0.9rem;
-    padding: 0.4rem 1rem;
-    color: #fff;
-    transition: all 0.4s ease-in-out;
-    cursor: pointer;
-    border-radius: 0.3rem;
-    font-family: roboto, arial;
-    /* width: 40%; */
-    font-weight: 500;
-    letter-spacing: 0.1rem;
-    
-    &:hover {
-        background-color: #0a86af;
-    }
-`;
-
 export const ErrorSpan = styled.span`
     background-color: #ffaeae;
     color: #9e0000;

@@ -1,9 +1,10 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../../images/R6Logo.png";
-import { Button, Nav, ImageLogo,InputSpace, ErrorSpan} from "./NavbarStyled";
+import { Nav, ImageLogo,InputSpace, ErrorSpan} from "./NavbarStyled";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../Button/Button";
 
 const searchSchema = z.object({
     title:z
@@ -42,7 +43,9 @@ export function Navbar(){
                 <Link to="/">
                     <ImageLogo src={logo} alt="Logo Siege News" />
                 </Link>
-                <Button onClick={goAuth}>Entrar</Button>
+                <Link to="/auth">
+                <Button onClick={goAuth} type="button" text="entrar"/>
+                </Link>
             </Nav>
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
             <Outlet/>
