@@ -7,6 +7,7 @@ import Home from './pages/Home/Home.jsx'
 import { Search } from './pages/Search/Search.jsx'
 import { GlobalStyle } from './GlobalStyled.jsx'
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
+import { Authentication } from './pages/Authentication/Authentication.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,9 +21,13 @@ const router = createBrowserRouter([
       {
         path:"/search/:title",
         element:<Search/>
-      }
-    ]
-  }
+      },
+    ],
+  },
+  {
+    path:"/auth",
+    element: <Authentication />
+  },
 ])
  
 
