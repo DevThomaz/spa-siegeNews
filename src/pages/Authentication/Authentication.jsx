@@ -23,28 +23,41 @@ export function Authentication(){
         formState:{ errors: errorsSignin},
     } = useForm({resolver: zodResolver(signinSchema)});
 
-    async function inHandleSubmit(data){
-        try{
-            const response = await signin(data)
-            Cookies.set("token", response.data,{expires: 1});
-            navigate("/")
-        }catch(error) {
-            console.log(error)
-        }
-    } 
-
     const navigate = useNavigate();
 
-    async function upHandleSubmit(data){
-        try{
-            const response = await signup(data)
-            Cookies.set("token", response.data.token,{expires: 1});
-            navigate("/")
-        }catch(error) {
-            console.log(error)
+    async function inHandleSubmit(data) {
+        try {
+            console.log("Iniciando login com:", data);
+            const responseData = await signin(data);
+            
+            if (!responseData || !responseData.token) {
+                console.error("Resposta inválida do servidor:", responseData);
+                return;
+            }
+            
+            Cookies.set("token", responseData.token, { expires: 1 });
+            navigate("/");
+        } catch (error) {
+            console.error("Erro durante o login:", error);
         }
     }
-
+    
+    async function upHandleSubmit(data) {
+        try {
+            console.log("Iniciando cadastro com:", data);
+            const responseData = await signup(data);
+            
+            if (!responseData || !responseData.token) {
+                console.error("Resposta inválida do servidor:", responseData);
+                return;
+            }
+            
+            Cookies.set("token", responseData.token, { expires: 1 });
+            navigate("/");
+        } catch (error) {
+            console.error("Erro durante o cadastro:", error);
+        }
+    }
     return(
         <AuthContainer>
              <Section type="signin">
