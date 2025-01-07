@@ -20,7 +20,6 @@ export default function Home(){
 
     useEffect(() => {
         findPost();
-        console.log(Cookies.get("token"));
     },[]);
 
 

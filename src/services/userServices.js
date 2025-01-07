@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const baseURL = "http://localhost:3000";
 
@@ -44,6 +45,15 @@ export async function signin(data) {
         throw error;
     }
 }
+
+export function userLogged(){
+    const response = axios.get(`${baseURL}/user/${id}`,{
+        headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+        }
+    });
+    return response;
+};
 
 function generateUserName(name) {
     const nameLowerCaseWithoutSpaces = name.replace(/\s/g, "").toLowerCase();
